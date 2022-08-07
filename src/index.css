@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:ital@1&display=swap');
+*{
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    background-color:#0B2434 ;
+    font-family: 'Karla', sans-serif;
+    margin: 0;
+    display: flex;
+}
+.container{
+    width: 600px;
+    height: 570px;
+    background-color:#F5F7FB ;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%,-50%);
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.rightImg{
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    opacity: 0.7;
+}
+.leftImg{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.start{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%, -50%);
+    top: 50%;
+}
+.start h1{
+    font-size: 31px;
+    color: #293264;
+    transform: translateY(35px);
+}
+.start h5{
+    font-size: 16px;
+    height: 19px;
+    font-family: 'Inter',sans-serif;
+    color: #293264;
+    letter-spacing: 1px;
+}
+.start button{
+    width: 193px;
+    height: 52px;
+    border-radius: 15px;
+    border: none;
+    background-color:#4D5B9E ;
+    color:#F5F7FB ;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+.start button:hover{
+    background-color: #0B2434;
+}
+
+.question{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left: 65px;
+    max-height: 90px;
+}
+.question h2{
+    font-size:16px ;
+    width: 450px;
+    color: #293264;
+}
+.options{
+    display: flex;
+    gap: 13px;
+}
+.options button{
+    min-width: 65px;
+    height: 20px;
+    color:#4D5B9E;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 0.794239px solid #4D5B9E;
+    box-shadow:0px 0px 0px 0.7px #4D5B9E inset;
+    cursor: pointer;
+    padding-left: -2px;
+    padding-right: -2px;
+   
+}
+
+.options button:active,.check-again-button:active{
+    box-shadow: 0px 0px 20px #F5F7FB inset;
+}
+.divide-line{
+    width: 425px;
+    height: 0px;
+    border: 0.794239px solid #DBDEF0;
+    margin-top: 14px;
+}
+.check-again-button{
+    width: 125px;
+    height: 40px;
+    background-color:#4D5B9E;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 10px;
+    color: #F5F7FB;
+    border: 0.794239px solid #4D5B9E;
+    transform: translate(230px,490px);
+    cursor: pointer;
+    transition: all 0.4s;
+    position: absolute;
+}
+.check-again-button:hover{
+    background-color: #0071b8;
+    color: #F5F7FB;
+}
+.score-text{
+    position: absolute;
+    top:490px;
+    left: 150px;
+    font-size: 12.5px;
+    font-family: 'Inter',sans-serif;
+    color: #293264;
+    font-weight: 600;
+}
