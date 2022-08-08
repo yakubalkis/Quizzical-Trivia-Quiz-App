@@ -133,8 +133,8 @@ body{
 .score-text{
     position: absolute;
     top:490px;
-    left: 150px;
-    font-size: 12.5px;
+    left: 140px;
+    font-size: 13.5px;
     font-family: 'Inter',sans-serif;
     color: #293264;
     font-weight: 600;
