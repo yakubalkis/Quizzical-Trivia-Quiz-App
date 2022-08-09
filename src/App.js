@@ -36,7 +36,6 @@ export default function App(){
         if(isCheckBtnClicked){ // when user click play again
             setNumberOfCorrect(0)
             setIsPlayAgain(prevState=> !prevState) // again  fetch data
-           
         }
     }
 
@@ -48,7 +47,6 @@ export default function App(){
         fetch('https://opentdb.com/api.php?amount=4&category=27&difficulty=medium&type=multiple')
         .then(res => res.json())
         .then(data =>{ setAllQuestions(data.results)
-            console.log(data.results)
         })
     },[isPlayAgain])
     
