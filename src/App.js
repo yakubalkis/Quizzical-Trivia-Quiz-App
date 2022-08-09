@@ -16,11 +16,12 @@ export default function App(){
     const[numberOfCorrect, setNumberOfCorrect] = React.useState(parseInt(0))
     const[isCheckBtnClicked, setIsCheckBtnClicked] = React.useState(false)
     const[isPlayAgain,setIsPlayAgain]= React.useState(false)
+    
   
 
     function handleAnswer(answer){
       
-        if(answer[0]===answer[1]){
+        if(answer[0]===answer[1]){ // count correct answer
             setNumberOfCorrect(prevState => {
                 if(prevState<4){
                     return  prevState+1
@@ -34,27 +35,29 @@ export default function App(){
         setIsCheckBtnClicked(prevState => !prevState)
         if(isCheckBtnClicked){ // when user click play again
             setNumberOfCorrect(0)
-            setIsPlayAgain(true) // again  fetch data
+            setIsPlayAgain(prevState=> !prevState) // again  fetch data
+           
         }
     }
 
-    function handleClickStart(){
+    function handleClickStart(){ // set conditional rendering
         setClickStart(false)
     }
 
-    React.useEffect(() => {
+    React.useEffect(() => { // fetch data
         fetch('https://opentdb.com/api.php?amount=4&category=27&difficulty=medium&type=multiple')
         .then(res => res.json())
-        .then(data =>setAllQuestions(data.results))
+        .then(data =>{ setAllQuestions(data.results)
+            console.log(data.results)
+        })
     },[isPlayAgain])
     
     
-    const questions = allQuestions.map((item)=> {
-    
+    const questions = allQuestions.map((item)=> { // pass the props to Quiz child component
         return <Quiz isPlayAgain={isPlayAgain} isCheckBtnClicked={isCheckBtnClicked} handleAnswer={(e) => handleAnswer(e)} {...item}   / >
     })
     
-    const styles={
+    const styles={ // conditional styling
         transform : isCheckBtnClicked ? `translate(${365}px,${485}px)` :''
     }
 
