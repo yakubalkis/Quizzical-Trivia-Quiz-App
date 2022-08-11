@@ -12,7 +12,11 @@ This is a solution to the Quizzical Trivia challenge on https://scrimba.com/lear
 
 ### Project View
 
+
 ![enter](https://user-images.githubusercontent.com/97192201/183664075-cb8e75cf-9d3c-4527-8b96-b8446e9a9f3e.jpg)
+
+![image](https://user-images.githubusercontent.com/97192201/184140594-554de0fa-92e8-4768-8a0a-08903093b7cd.png)
+
 
 ![wrong](https://user-images.githubusercontent.com/97192201/183664279-f6ea1a09-b8b1-4d14-a8ee-073c2ad741c8.jpg)
 
