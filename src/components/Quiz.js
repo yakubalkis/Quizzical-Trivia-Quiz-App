@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
+
 export default function Quiz(props){
 
+const[isUserClickedTrue, setIsUserClickedTrue] = useState(true)
 const [valueOfClick, setvalueOfClick] = useState("")
-const[isTrue,  setIsTrue] = React.useState(false)
-const[indexes,setIndexes] = React.useState('')
+const[indexes,setIndexes] = useState('')
 
 
 const isInclude = props.incorrect_answers.includes(props.correct_answer) //put all answers in incorrect answers array
@@ -27,19 +28,23 @@ setIndexes(randomIndexes)
 
 function getResponse(answerOfUser, correct, value) { // set the isTrue state, and return the test list to handleAnswer function which is in the parent component(App)
     setvalueOfClick(value)
-    if(answerOfUser === correct){
-        setIsTrue(true)
+     
+    if(answerOfUser === correct && isUserClickedTrue){
+        setIsUserClickedTrue(false)
+        const test = [ answerOfUser,correct]
+        return props.handleAnswer(test)
     }
-    else{
-        setIsTrue(false)
+    else if(answerOfUser !== correct && isUserClickedTrue===false){
+        setIsUserClickedTrue(true)
+        const test = [ answerOfUser,correct]
+        return props.handleAnswer(test)
     }
-    const test = [ answerOfUser,correct]
-    return props.handleAnswer(test)
    }
    
 React.useEffect(() => {  //  when user click 'play again'
     if(!props.isCheckBtnClicked){ 
         setvalueOfClick('')
+        setIsUserClickedTrue(true)
     }
 },[props.isCheckBtnClicked])
    
@@ -53,7 +58,7 @@ React.useEffect(() => {  //  when user click 'play again'
                 <button 
                 style={{
                 backgroundColor: props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[0]]===props.correct_answer ? valueOfClick==='A' ? '#94D7A2' : '#94D7A2' : valueOfClick==='A' ? '#F8BCBC' : "#F5F7FB" : valueOfClick === "A" ? "#0B2434" : "#F5F7FB",
-                color: props.isCheckBtnClicked===true ? valueOfClick==='A' ? isTrue ? '#293264' : '#293264' : '#293264': valueOfClick === 'A' ? '#F5F7FB':'#4D5B9E',
+                color: props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[0]]===props.correct_answer ? valueOfClick==='A' ? '#293264' : '#293264' : '#293264': valueOfClick === 'A' ? '#F5F7FB':'#4D5B9E',
                 opacity:props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[0]]===props.correct_answer ? valueOfClick==='A' ? 1 : 1: valueOfClick==='A' ? 1 : 0.7 : 1
                 }} 
                        
@@ -64,7 +69,7 @@ React.useEffect(() => {  //  when user click 'play again'
                 <button 
                 style={{
                 backgroundColor: props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[1]]===props.correct_answer ? valueOfClick==='B' ? '#94D7A2' : '#94D7A2' : valueOfClick==='B' ? '#F8BCBC' : "#F5F7FB" : valueOfClick === "B" ? "#0B2434" : "#F5F7FB",
-                 color: props.isCheckBtnClicked===true ? valueOfClick==='B' ? isTrue ? '#293264' : '#293264' : '#293264': valueOfClick === 'B' ? '#F5F7FB':'#4D5B9E',
+                color: props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[1]]===props.correct_answer ? valueOfClick==='B' ? '#293264' : '#293264' : '#293264': valueOfClick === 'B' ? '#F5F7FB':'#4D5B9E',
                  opacity:props.isCheckBtnClicked===true ?props.incorrect_answers[indexes[1]]===props.correct_answer ? valueOfClick==='B' ? 1 : 1: valueOfClick==='B' ? 1 : 0.7 : 1
                 }} 
                        
@@ -75,7 +80,7 @@ React.useEffect(() => {  //  when user click 'play again'
                 <button 
                 style={{
                 backgroundColor: props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[2]]===props.correct_answer ? valueOfClick==='C' ? '#94D7A2' : '#94D7A2' : valueOfClick==='C' ? '#F8BCBC' : "#F5F7FB" : valueOfClick === "C" ? "#0B2434" : "#F5F7FB",
-                color: props.isCheckBtnClicked===true ? valueOfClick==='C' ? isTrue ? '#293264' : '#293264' : '#293264': valueOfClick === 'C' ? '#F5F7FB':'#4D5B9E',
+                color: props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[2]]===props.correct_answer ? valueOfClick==='C' ? '#293264' : '#293264' : '#293264': valueOfClick === 'C' ? '#F5F7FB':'#4D5B9E',
                 opacity:props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[2]]===props.correct_answer ? valueOfClick==='C' ? 1 : 1: valueOfClick==='C' ? 1 : 0.7 : 1
                 }} 
                         
@@ -86,7 +91,7 @@ React.useEffect(() => {  //  when user click 'play again'
                 <button 
                 style={{
                   backgroundColor: props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[3]]===props.correct_answer ? valueOfClick==='D' ? '#94D7A2' : '#94D7A2' : valueOfClick==='D' ? '#F8BCBC' : "#F5F7FB" : valueOfClick === "D" ? "#0B2434" : "#F5F7FB",
-                 color: props.isCheckBtnClicked===true ? valueOfClick==='D' ? isTrue ? '#293264' : '#293264' : '#293264': valueOfClick === 'D' ? '#F5F7FB':'#4D5B9E',
+                  color: props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[3]]===props.correct_answer ? valueOfClick==='D' ? '#293264' : '#293264' : '#293264': valueOfClick === 'D' ? '#F5F7FB':'#4D5B9E',
                  opacity:props.isCheckBtnClicked===true ? props.incorrect_answers[indexes[3]]===props.correct_answer ? valueOfClick==='D' ? 1 : 1: valueOfClick==='D' ? 1 : 0.7 : 1
                 }} 
                         
