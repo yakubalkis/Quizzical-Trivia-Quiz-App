@@ -22,13 +22,9 @@ export default function App(){
     function handleAnswer(answer){
       
         if(answer[0]===answer[1]){ // count correct answer
-            setNumberOfCorrect(prevState => {
-                if(prevState<4){
-                    return  prevState+1
-                }
-                else return prevState
-            })
+            setNumberOfCorrect(prevState => prevState+1)
         }
+        else setNumberOfCorrect(prevState => prevState-1)
     }
     
     function handleCheckAgainBtn(){
@@ -49,7 +45,7 @@ export default function App(){
         .then(data =>{ setAllQuestions(data.results)
         })
     },[isPlayAgain])
-    
+    console.log(allQuestions)
     
     const questions = allQuestions.map((item)=> { // pass the props to Quiz child component
         return <Quiz isPlayAgain={isPlayAgain} isCheckBtnClicked={isCheckBtnClicked} handleAnswer={(e) => handleAnswer(e)} {...item}   / >
